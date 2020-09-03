@@ -5,7 +5,7 @@ export class MainScene extends Scene {
   private stars!: Physics.Arcade.Group;
   private bombs!: Physics.Arcade.Group;
   private platforms!: Physics.Arcade.StaticGroup;
-  private cursors!: Input.Keyboard.CursorKeys;
+  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   private scoreText!: GameObjects.Text;
 
   private score = 0;
@@ -60,7 +60,7 @@ export class MainScene extends Scene {
       setXY: { x: 12, y: 0, stepX: 70 }
     });
 
-    this.stars.children.iterate(child => {
+    this.stars.children.iterate((child: any) => {
       child.setBounceY(Math.FloatBetween(.4, .8));
     }, this);
 
@@ -116,7 +116,7 @@ export class MainScene extends Scene {
     this.scoreText.setText(`score: ${this.score}`);
 
     if (!this.stars.countActive(true)) {
-      this.stars.children.iterate(c => c.enableBody(true, c.x, 0, true, true), this);
+      this.stars.children.iterate((c: any) => c.enableBody(true, c.x, 0, true, true), this);
 
       let x = (this.player.x < 400) ? Math.Between(400,800) : Math.Between(0,400);
       let bomb = this.bombs.create(x, 16, 'bomb');

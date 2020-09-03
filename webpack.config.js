@@ -11,14 +11,15 @@ module.exports = {
   module: {
     rules: [
       { test: /\.ts$/, loader: 'ts-loader', exclude: '/node_modules/' },
-      { test: /phaser\.js$/, loader: 'expose-loader?Phaser' }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'PhaserApp'
     }),
-    new CopyWebpackPlugin([{ from: './assets', to: './assets' }])
+    new CopyWebpackPlugin({
+      patterns: [{ from: './assets', to: './assets' }]
+    })
   ],
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),

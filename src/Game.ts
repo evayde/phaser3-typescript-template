@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
 import { MainScene } from './scenes/MainScene';
 
-const config: GameConfig = {
+const config: Phaser.Types.Core.GameConfig = {
   title: "test",
   url: "https://github.com/evayde",
   version: "1.0",
@@ -20,7 +20,7 @@ const config: GameConfig = {
 }
 
 class Game extends Phaser.Game {
-  constructor(config: GameConfig) {
+  constructor(config: Phaser.Types.Core.GameConfig) {
     super(config);
   }
 }
